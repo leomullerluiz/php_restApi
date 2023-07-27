@@ -12,7 +12,6 @@
 
     $product_arr = array();
     $product_arr['return'] = array();
-
     $product_arr['data'] = array();
 
     if($num > 0){
