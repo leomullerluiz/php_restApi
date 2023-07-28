@@ -31,7 +31,7 @@
         }
 
         public function update(){
-            
+
             $query = "SELECT * FROM ".$this->table." WHERE id = ".$this->id." LIMIT 1";
             $stmt = $this->conn->prepare($query);
             $stmt->execute();
@@ -52,8 +52,14 @@
         }
 
         public function delete(){
-
-
+            $query = "DELETE FROM ".$this->table." WHERE id = :id";
+            $stmt = $this->conn->prepare($query);
+            $this->id = htmlspecialchars(strip_tags($this->id));
+            $stmt->bindParam(":id", $this->id);
+            if($stmt->execute()){
+                return true;
+            }
+            return false;
         }
 
         public function read_single(){
