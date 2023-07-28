@@ -30,6 +30,16 @@
             return $stmt;
         }
 
+        public function update(){
+
+
+        }
+
+        public function delete(){
+
+            
+        }
+
         public function read_single(){
             $query = "SELECT * FROM ".$this->table." WHERE id = ".$this->id." LIMIT 1";
             $stmt = $this->conn->prepare($query);
