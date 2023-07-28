@@ -5,7 +5,7 @@
 >Read: 
 ```shell
 curl --request GET \
-  --url http://localhost/php_restApi/api/read.php
+  --url http://localhost/php_restApi/api/read
 ```
 
 
