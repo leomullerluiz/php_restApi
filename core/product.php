@@ -31,13 +31,29 @@
         }
 
         public function update(){
+            
+            $query = "SELECT * FROM ".$this->table." WHERE id = ".$this->id." LIMIT 1";
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            $num = $stmt->rowCount();
+            if($num >= 1){
+                $query = "UPDATE ".$this->table." SET name = :name WHERE id = :id";
+                $stmt = $this->conn->prepare($query);
+                $this->name = htmlspecialchars(strip_tags($this->name));
+                $this->id = htmlspecialchars(strip_tags($this->id));
+                $stmt->bindParam(':name', $this->name);
+                $stmt->bindParam(':id', $this->id);
+                if($stmt->execute()){
+                    return true;
+                }
+            }
 
-
+            return false;
         }
 
         public function delete(){
 
-            
+
         }
 
         public function read_single(){
